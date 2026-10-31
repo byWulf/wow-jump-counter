@@ -1,0 +1,21 @@
+## Interface: 11509, 16001
+## Title: JumpCounter
+## Notes: Counts your jumps, celebrates milestones and shows jump statistics across all characters.
+## Notes-deDE: Zählt deine Sprünge, feiert Meilensteine und zeigt eine Sprungstatistik über alle Charaktere.
+## Notes-frFR: Compte vos sauts, célèbre les paliers et affiche des statistiques de sauts pour tous vos personnages.
+## Notes-esES: Cuenta tus saltos, celebra hitos y muestra estadísticas de saltos de todos tus personajes.
+## Notes-esMX: Cuenta tus saltos, celebra hitos y muestra estadísticas de saltos de todos tus personajes.
+## Notes-itIT: Conta i tuoi salti, festeggia i traguardi e mostra le statistiche dei salti di tutti i personaggi.
+## Notes-ptBR: Conta seus pulos, comemora marcos e mostra estatísticas de pulos de todos os personagens.
+## Notes-ruRU: Считает ваши прыжки, отмечает достижения и показывает статистику прыжков всех персонажей.
+## Notes-koKR: 점프 횟수를 세고, 기록 달성을 축하하며, 모든 캐릭터의 점프 통계를 보여줍니다.
+## Notes-zhCN: 统计你的跳跃次数，庆祝里程碑，并显示所有角色的跳跃统计。
+## Notes-zhTW: 統計你的跳躍次數，慶祝里程碑，並顯示所有角色的跳躍統計。
+## Author: byWulf
+## Version: 1.0.0
+## SavedVariables: JumpCounterDB
+## IconTexture: Interface\Icons\Ability_Rogue_Sprint
+
+Locales.lua
+Core.lua
+UI.lua
