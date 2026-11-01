@@ -72,6 +72,8 @@ Below the chart you see the jumps in the visible range, the average per hour/day
 | Drag | Move the icon around the minimap |
 | Hover | Jumps of this character, all characters and this session (updates live) |
 
+The icon is a regular [LibDBIcon](https://www.curseforge.com/wow/addons/libdbicon-1-0) button, so minimap button managers like SexyMap can show, hide or collect it. JumpCounter is also a LibDataBroker data source: LDB displays such as Titan Panel or ChocolateBar can show your jump count. The required libraries are embedded; no other addons are needed.
+
 ## Slash commands
 
 | Command | Effect |

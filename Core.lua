@@ -57,7 +57,7 @@ local function InitDB()
     JumpCounterDB = JumpCounterDB or {}
     local db = JumpCounterDB
     db.chars = db.chars or {}
-    db.minimap = db.minimap or { angle = 215, hide = false }
+    db.minimap = db.minimap or { minimapPos = 215, hide = false }
     if db.announce == nil then db.announce = true end
     db.view = db.view or {}
     db.view.mode = db.view.mode or "day"

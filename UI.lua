@@ -609,19 +609,12 @@ end
 -- Minimap button
 ---------------------------------------------------------------------------
 
-local minimapButton
-
-local function UpdateMinimapPosition()
-    local angle = math.rad(ns.db.minimap.angle or 215)
-    local x, y = math.cos(angle), math.sin(angle)
-    local w, h = Minimap:GetWidth() / 2 + 5, Minimap:GetHeight() / 2 + 5
-    if GetMinimapShape and GetMinimapShape() == "SQUARE" then
-        x = max(-1, min(1, x * 1.4142))
-        y = max(-1, min(1, y * 1.4142))
-    end
-    minimapButton:ClearAllPoints()
-    minimapButton:SetPoint("CENTER", Minimap, "CENTER", x * w, y * h)
-end
+-- Registered through LibDataBroker + LibDBIcon, so minimap button managers (SexyMap, ...) and
+-- LDB displays (Titan Panel, ...) can pick it up.
+local ldb = LibStub("LibDataBroker-1.1")
+local ldbi = LibStub("LibDBIcon-1.0")
+local dataObject
+local tooltipOwner -- minimap button or LDB display frame whose tooltip is open
 
 local function MinimapTooltip(self)
     GameTooltip:SetOwner(self, "ANCHOR_LEFT")
@@ -637,71 +630,54 @@ local function MinimapTooltip(self)
 end
 
 function ns.UpdateMinimapTooltip()
-    if minimapButton and GameTooltip:IsOwned(minimapButton) then
-        MinimapTooltip(minimapButton)
+    if dataObject then dataObject.text = ns.FormatNumber(ns.char.total) end
+    if tooltipOwner and GameTooltip:IsOwned(tooltipOwner) then
+        MinimapTooltip(tooltipOwner)
     end
 end
 
 local function CreateMinimapButton()
-    local btn = CreateFrame("Button", "JumpCounterMinimapButton", Minimap)
-    btn:SetSize(31, 31)
-    btn:SetFrameStrata("MEDIUM")
-    btn:SetFrameLevel(8)
-    btn:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-    btn:RegisterForDrag("LeftButton")
-    btn:SetHighlightTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight")
-
-    local overlay = btn:CreateTexture(nil, "OVERLAY")
-    overlay:SetSize(53, 53)
-    overlay:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
-    overlay:SetPoint("TOPLEFT")
-    local background = btn:CreateTexture(nil, "BACKGROUND")
-    background:SetSize(20, 20)
-    background:SetTexture("Interface\\Minimap\\UI-Minimap-Background")
-    background:SetPoint("TOPLEFT", 7, -5)
-    local icon = btn:CreateTexture(nil, "ARTWORK")
-    icon:SetSize(17, 17)
-    icon:SetTexture(ICON)
-    icon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
-    icon:SetPoint("TOPLEFT", 7, -6)
-
-    btn:SetScript("OnClick", function(self, mouseButton)
-        if mouseButton == "RightButton" then
-            ns.db.announce = not ns.db.announce
-            ns.Print(L.ANNOUNCE:format(ns.db.announce and L.ON or L.OFF))
+    dataObject = ldb:NewDataObject("JumpCounter", {
+        type = "data source",
+        label = "JumpCounter",
+        text = ns.FormatNumber(ns.char.total),
+        icon = ICON,
+        OnClick = function(self, mouseButton)
+            if mouseButton == "RightButton" then
+                ns.db.announce = not ns.db.announce
+                ns.Print(L.ANNOUNCE:format(ns.db.announce and L.ON or L.OFF))
+                MinimapTooltip(self)
+            else
+                ns.ToggleWindow()
+            end
+        end,
+        OnEnter = function(self)
+            tooltipOwner = self
             MinimapTooltip(self)
-        else
-            ns.ToggleWindow()
-        end
-    end)
-    btn:SetScript("OnEnter", MinimapTooltip)
-    btn:SetScript("OnLeave", function() GameTooltip:Hide() end)
-    btn:SetScript("OnDragStart", function(self)
-        GameTooltip:Hide()
-        self:SetScript("OnUpdate", function()
-            local mx, my = Minimap:GetCenter()
-            local px, py = GetCursorPosition()
-            local scale = Minimap:GetEffectiveScale()
-            ns.db.minimap.angle = math.deg(math.atan2(py / scale - my, px / scale - mx))
-            UpdateMinimapPosition()
-        end)
-    end)
-    btn:SetScript("OnDragStop", function(self)
-        self:SetScript("OnUpdate", nil)
-    end)
-
-    minimapButton = btn
+        end,
+        OnLeave = function()
+            tooltipOwner = nil
+            GameTooltip:Hide()
+        end,
+    })
+    -- LibDBIcon keeps minimapPos/hide in this table
+    ldbi:Register("JumpCounter", dataObject, ns.db.minimap)
 end
 
 function ns.UpdateMinimapButton()
-    if not minimapButton then CreateMinimapButton() end
-    UpdateMinimapPosition()
-    minimapButton:SetShown(not ns.db.minimap.hide)
+    if not dataObject then CreateMinimapButton() end
+    if ns.db.minimap.hide then ldbi:Hide("JumpCounter") else ldbi:Show("JumpCounter") end
 end
 
 function ns.InitUI()
     view = ns.db.view
     if view.char ~= "ALL" and not ns.db.chars[view.char] then view.char = "ALL" end
     if not MODE_BY_KEY[view.mode] then view.mode = "day" end
+    -- position of the old self-made button, same angle convention as LibDBIcon
+    local mm = ns.db.minimap
+    if mm.angle then
+        mm.minimapPos = mm.minimapPos or mm.angle
+        mm.angle = nil
+    end
     ns.UpdateMinimapButton()
 end
