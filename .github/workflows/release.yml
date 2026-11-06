@@ -39,3 +39,4 @@ jobs:
         with:
           name: package
           path: .release/
+          include-hidden-files: true
