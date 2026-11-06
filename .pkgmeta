@@ -1,0 +1,5 @@
+package-as: JumpStatistics
+
+ignore:
+  - AGENTS.md
+  - CLAUDE.md
