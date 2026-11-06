@@ -447,7 +447,7 @@ local function ToggleCharList()
 end
 
 local function CreateWindow()
-    frame = CreateFrame("Frame", "JumpCounterFrame", UIParent, "BackdropTemplate")
+    frame = CreateFrame("Frame", "JumpStatisticsFrame", UIParent, "BackdropTemplate")
     frame:SetSize(700, 432)
     frame:SetPoint("CENTER")
     frame:SetFrameStrata("HIGH")
@@ -465,7 +465,7 @@ local function CreateWindow()
         insets = { left = 11, right = 12, top = 12, bottom = 11 },
     })
     frame:Hide()
-    tinsert(UISpecialFrames, "JumpCounterFrame")
+    tinsert(UISpecialFrames, "JumpStatisticsFrame")
 
     local header = frame:CreateTexture(nil, "ARTWORK")
     header:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Header")
@@ -618,7 +618,7 @@ local tooltipOwner -- minimap button or LDB display frame whose tooltip is open
 
 local function MinimapTooltip(self)
     GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-    GameTooltip:AddLine("JumpCounter")
+    GameTooltip:AddLine("Jump Statistics")
     GameTooltip:AddDoubleLine(L.TT_THIS_CHAR, ns.FormatNumber(ns.char.total), 1, 1, 1, 1, 1, 1)
     GameTooltip:AddDoubleLine(L.TT_ALL_CHARS, ns.FormatNumber(ns.AccountTotal()), 1, 1, 1, 1, 1, 1)
     GameTooltip:AddDoubleLine(L.TT_SESSION, ns.FormatNumber(ns.sessionJumps), 1, 1, 1, 1, 1, 1)
@@ -637,9 +637,9 @@ function ns.UpdateMinimapTooltip()
 end
 
 local function CreateMinimapButton()
-    dataObject = ldb:NewDataObject("JumpCounter", {
+    dataObject = ldb:NewDataObject("JumpStatistics", {
         type = "data source",
-        label = "JumpCounter",
+        label = "Jump Statistics",
         text = ns.FormatNumber(ns.char.total),
         icon = ICON,
         OnClick = function(self, mouseButton)
@@ -661,12 +661,12 @@ local function CreateMinimapButton()
         end,
     })
     -- LibDBIcon keeps minimapPos/hide in this table
-    ldbi:Register("JumpCounter", dataObject, ns.db.minimap)
+    ldbi:Register("JumpStatistics", dataObject, ns.db.minimap)
 end
 
 function ns.UpdateMinimapButton()
     if not dataObject then CreateMinimapButton() end
-    if ns.db.minimap.hide then ldbi:Hide("JumpCounter") else ldbi:Show("JumpCounter") end
+    if ns.db.minimap.hide then ldbi:Hide("JumpStatistics") else ldbi:Show("JumpStatistics") end
 end
 
 function ns.InitUI()

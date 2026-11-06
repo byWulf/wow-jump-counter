@@ -1,4 +1,4 @@
-# JumpCounter
+# Jump Statistics
 
 A World of Warcraft addon that counts how often you jump, celebrates milestones and shows when you jumped the most.
 
@@ -12,21 +12,22 @@ A World of Warcraft addon that counts how often you jump, celebrates milestones 
 
 | Version | Interface |
 |---|---|
-| WoW Classic Era | 11509 |
-| WoW Classic Forever | 16001 |
+| WoW Forever | 16001 |
 
-Other versions are untested. If the APIs used are available there, adding the interface number to the `.toc` is usually enough.
+Classic Era and other versions are not supported.
 
 ## Installation
 
-The folder in your AddOns directory **must** be named `JumpCounter`, otherwise WoW will not load the addon:
+Install it from [CurseForge](https://www.curseforge.com/wow/addons/jump-statistics), e.g. with the CurseForge app.
+
+For a manual installation, note that the folder in your AddOns directory **must** be named `JumpStatistics`, otherwise WoW will not load the addon:
 
 ```bash
-cd "C:/Program Files (x86)/World of Warcraft/_classic_era_/Interface/AddOns"
-git clone https://github.com/byWulf/wow-jump-counter.git JumpCounter
+cd "C:/Program Files (x86)/World of Warcraft/_forever_/Interface/AddOns"
+git clone https://github.com/byWulf/wow-jump-statistics.git JumpStatistics
 ```
 
-For Forever, use `_forever_/Interface/AddOns` instead. Alternatively, download the repository as a ZIP and extract its contents to `Interface/AddOns/JumpCounter/`.
+Alternatively, download the ZIP from the [releases](https://github.com/byWulf/wow-jump-statistics/releases) and extract it into `Interface/AddOns`.
 
 Then `/reload` in game.
 
@@ -72,13 +73,13 @@ Below the chart you see the jumps in the visible range, the average per hour/day
 | Drag | Move the icon around the minimap |
 | Hover | Jumps of this character, all characters and this session (updates live) |
 
-The icon is a regular [LibDBIcon](https://www.curseforge.com/wow/addons/libdbicon-1-0) button, so minimap button managers like SexyMap can show, hide or collect it. JumpCounter is also a LibDataBroker data source: LDB displays such as Titan Panel or ChocolateBar can show your jump count. The required libraries are embedded; no other addons are needed.
+The icon is a regular [LibDBIcon](https://www.curseforge.com/wow/addons/libdbicon-1-0) button, so minimap button managers like SexyMap can show, hide or collect it. Jump Statistics is also a LibDataBroker data source: LDB displays such as Titan Panel or ChocolateBar can show your jump count. The required libraries are embedded; no other addons are needed.
 
 ## Slash commands
 
 | Command | Effect |
 |---|---|
-| `/jumps` | Open/close the statistics window (also `/jumpcounter`, `/sprung`) |
+| `/jumps` | Open/close the statistics window (also `/jumpstats`, `/sprung`) |
 | `/jumps stats` | Print your numbers to chat |
 | `/jumps minimap` | Show/hide the minimap icon |
 | `/jumps announce` | Toggle milestone announcements in group chat |
@@ -90,4 +91,9 @@ English, German, French, Spanish (EU and Latin America), Italian, Brazilian Port
 
 ## Data
 
-Jumps are stored per character and per hour in the account-wide SavedVariable `JumpCounterDB`, which is what makes the cross-character statistics possible. Each game version (Classic Era, Forever) has its own `WTF` folder and therefore its own data.
+Jumps are stored per character and per hour in the account-wide SavedVariable `JumpStatisticsDB`, which is what makes the cross-character statistics possible.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
+The libraries in `Libs/` (LibStub, CallbackHandler-1.0, LibDataBroker-1.1, LibDBIcon-1.0) are third-party code under their own licenses.

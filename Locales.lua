@@ -8,7 +8,7 @@ local L = {
     DATE = "MM/DD/YYYY",
     DATE_SHORT = "MM/DD",
 
-    TITLE = "JumpCounter - Jump Statistics",
+    TITLE = "Jump Statistics",
     MODE_HOUR = "Hours",
     MODE_DAY = "Days",
     MODE_WEEK = "Weeks",
@@ -87,7 +87,7 @@ locales.deDE = {
     DATE = "DD.MM.YYYY",
     DATE_SHORT = "DD.MM.",
 
-    TITLE = "JumpCounter - Sprungstatistik",
+    TITLE = "Jump Statistics - Sprungstatistik",
     MODE_HOUR = "Stunden",
     MODE_DAY = "Tage",
     MODE_WEEK = "Wochen",
@@ -159,7 +159,7 @@ locales.frFR = {
     DATE = "DD/MM/YYYY",
     DATE_SHORT = "DD/MM",
 
-    TITLE = "JumpCounter - Statistiques de sauts",
+    TITLE = "Jump Statistics - Statistiques de sauts",
     MODE_HOUR = "Heures",
     MODE_DAY = "Jours",
     MODE_WEEK = "Semaines",
@@ -230,7 +230,7 @@ locales.esES = {
     DATE = "DD/MM/YYYY",
     DATE_SHORT = "DD/MM",
 
-    TITLE = "JumpCounter - Estadísticas de saltos",
+    TITLE = "Jump Statistics - Estadísticas de saltos",
     MODE_HOUR = "Horas",
     MODE_DAY = "Días",
     MODE_WEEK = "Semanas",
@@ -302,7 +302,7 @@ locales.itIT = {
     DATE = "DD/MM/YYYY",
     DATE_SHORT = "DD/MM",
 
-    TITLE = "JumpCounter - Statistiche dei salti",
+    TITLE = "Jump Statistics - Statistiche dei salti",
     MODE_HOUR = "Ore",
     MODE_DAY = "Giorni",
     MODE_WEEK = "Settimane",
@@ -373,7 +373,7 @@ locales.ptBR = {
     DATE = "DD/MM/YYYY",
     DATE_SHORT = "DD/MM",
 
-    TITLE = "JumpCounter - Estatísticas de pulos",
+    TITLE = "Jump Statistics - Estatísticas de pulos",
     MODE_HOUR = "Horas",
     MODE_DAY = "Dias",
     MODE_WEEK = "Semanas",
@@ -452,7 +452,7 @@ locales.ruRU = {
     DATE = "DD.MM.YYYY",
     DATE_SHORT = "DD.MM",
 
-    TITLE = "JumpCounter - статистика прыжков",
+    TITLE = "Jump Statistics - статистика прыжков",
     MODE_HOUR = "Часы",
     MODE_DAY = "Дни",
     MODE_WEEK = "Недели",
@@ -523,7 +523,7 @@ locales.koKR = {
     DATE = "YYYY.MM.DD",
     DATE_SHORT = "MM.DD",
 
-    TITLE = "JumpCounter - 점프 통계",
+    TITLE = "Jump Statistics - 점프 통계",
     MODE_HOUR = "시간",
     MODE_DAY = "일",
     MODE_WEEK = "주",
@@ -592,7 +592,7 @@ locales.zhCN = {
     DATE = "YYYY/MM/DD",
     DATE_SHORT = "MM/DD",
 
-    TITLE = "JumpCounter - 跳跃统计",
+    TITLE = "Jump Statistics - 跳跃统计",
     MODE_HOUR = "小时",
     MODE_DAY = "天",
     MODE_WEEK = "周",
@@ -661,7 +661,7 @@ locales.zhTW = {
     DATE = "YYYY/MM/DD",
     DATE_SHORT = "MM/DD",
 
-    TITLE = "JumpCounter - 跳躍統計",
+    TITLE = "Jump Statistics - 跳躍統計",
     MODE_HOUR = "小時",
     MODE_DAY = "天",
     MODE_WEEK = "週",

@@ -1,5 +1,5 @@
-## Interface: 11509, 16001
-## Title: JumpCounter
+## Interface: 16001
+## Title: Jump Statistics
 ## Notes: Counts your jumps, celebrates milestones and shows jump statistics across all characters.
 ## Notes-deDE: Zählt deine Sprünge, feiert Meilensteine und zeigt eine Sprungstatistik über alle Charaktere.
 ## Notes-frFR: Compte vos sauts, célèbre les paliers et affiche des statistiques de sauts pour tous vos personnages.
@@ -13,7 +13,9 @@
 ## Notes-zhTW: 統計你的跳躍次數，慶祝里程碑，並顯示所有角色的跳躍統計。
 ## Author: byWulf
 ## Version: 1.0.0
-## SavedVariables: JumpCounterDB
+## X-License: MIT
+## X-Curse-Project-ID: 1787609
+## SavedVariables: JumpStatisticsDB
 ## IconTexture: Interface\Icons\Ability_Rogue_Sprint
 
 Libs\LibStub\LibStub.lua

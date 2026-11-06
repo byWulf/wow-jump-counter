@@ -3,7 +3,7 @@ local L = ns.L
 
 local floor = math.floor
 
-local PREFIX = "|cff33ff99JumpCounter|r: "
+local PREFIX = "|cff33ff99Jump Statistics|r: "
 
 ns.sessionJumps = 0
 
@@ -52,10 +52,10 @@ end
 -- Saved data
 ---------------------------------------------------------------------------
 
--- JumpCounterDB.chars["Name-Realm"] = { total, hours = { [hour since epoch] = count }, name, realm, class }
+-- JumpStatisticsDB.chars["Name-Realm"] = { total, hours = { [hour since epoch] = count }, name, realm, class }
 local function InitDB()
-    JumpCounterDB = JumpCounterDB or {}
-    local db = JumpCounterDB
+    JumpStatisticsDB = JumpStatisticsDB or {}
+    local db = JumpStatisticsDB
     db.chars = db.chars or {}
     db.minimap = db.minimap or { minimapPos = 215, hide = false }
     if db.announce == nil then db.announce = true end
@@ -203,10 +203,10 @@ local function DeleteChar(arg)
     ns.Print(L.CHAR_NOT_FOUND:format(arg))
 end
 
-SLASH_JUMPCOUNTER1 = "/jumps"
-SLASH_JUMPCOUNTER2 = "/jumpcounter"
-SLASH_JUMPCOUNTER3 = "/sprung"
-SlashCmdList.JUMPCOUNTER = function(msg)
+SLASH_JUMPSTATISTICS1 = "/jumps"
+SLASH_JUMPSTATISTICS2 = "/jumpstats"
+SLASH_JUMPSTATISTICS3 = "/sprung"
+SlashCmdList.JUMPSTATISTICS = function(msg)
     local cmd, arg = (msg or ""):match("^%s*(%S*)%s*(.-)%s*$")
     cmd = cmd:lower()
     if cmd == "" or cmd == "show" then
